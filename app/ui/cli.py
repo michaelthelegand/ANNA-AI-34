@@ -1,4 +1,5 @@
-﻿from app.core.health import health_check
+from app.brain.router import respond
+from app.core.health import health_check
 from app.core.logger import get_logger
 
 logger = get_logger("anna.cli")
@@ -38,7 +39,7 @@ def run_cli() -> None:
             print(health_check())
             continue
 
-        print(f"ANNA: I received your message: {user_input}")
+        print(f"ANNA: {respond(user_input)}")
 
 
 if __name__ == "__main__":
