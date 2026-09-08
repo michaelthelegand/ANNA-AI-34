@@ -1,4 +1,6 @@
-﻿from app.core.logger import get_logger
+from datetime import datetime
+
+from app.core.logger import get_logger
 
 logger = get_logger("anna.brain")
 
@@ -15,6 +17,14 @@ def respond(user_input: str) -> str:
 
     if normalized in {"hi", "hello", "hey", "good morning", "good afternoon", "good evening"} or normalized.startswith(("hi ", "hello ", "hey ")):
         return "Hello! I am ANNA. How can I help you today?"
+
+    if normalized in {"what time is it", "what is the time", "current time", "time"}:
+        current_time = datetime.now().strftime("%I:%M %p").lstrip("0")
+        return f"The current local time is {current_time}."
+
+    if normalized in {"what is today's date", "what is the date", "today's date", "date"}:
+        current_date = datetime.now().strftime("%B %d, %Y").replace(" 0", " ")
+        return f"Today's date is {current_date}."
 
     if normalized in {"thanks", "thank you", "thx"}:
         return "You are welcome. I am happy to help."
