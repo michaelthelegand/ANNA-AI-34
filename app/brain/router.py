@@ -11,10 +11,19 @@ def respond(user_input: str) -> str:
         return "Please tell me how I can help."
 
     logger.info("Processing message through the brain layer")
-    normalized = message.lower()
+    normalized = " ".join(message.lower().split())
 
-    if normalized in {"hi", "hello", "hey", "good morning", "good afternoon", "good evening"}:
-        return "Hello! I’m ANNA. How can I help you today?"
+    if normalized in {"hi", "hello", "hey", "good morning", "good afternoon", "good evening"} or normalized.startswith(("hi ", "hello ", "hey ")):
+        return "Hello! I am ANNA. How can I help you today?"
+
+    if normalized in {"thanks", "thank you", "thx"}:
+        return "You are welcome. I am happy to help."
+
+    if normalized in {"bye", "goodbye", "good night", "see you"}:
+        return "Goodbye! I will be here whenever you need me."
+
+    if normalized in {"who are you", "what are you", "what is your name"}:
+        return "I am ANNA, your personal AI assistant."
 
     if "help" in normalized:
         return "I can help with questions, project tasks, health checks, and general conversations."

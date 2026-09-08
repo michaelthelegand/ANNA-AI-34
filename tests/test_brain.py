@@ -1,8 +1,8 @@
-from app.brain.router import respond
+﻿from app.brain.router import respond
 
 
 def test_respond_returns_message():
-    assert respond("Hello ANNA") == "I received your message: Hello ANNA"
+    assert "Hello!" in respond("Hello ANNA")
 
 
 def test_respond_handles_empty_input():
@@ -18,3 +18,4 @@ def test_respond_handles_help():
 
 def test_respond_handles_health_status():
     assert "healthy" in respond("health status")
+
