@@ -25,6 +25,15 @@ def respond(user_input: str) -> str:
     if normalized in {"who are you", "what are you", "what is your name"}:
         return "I am ANNA, your personal AI assistant."
 
+    if normalized in {"how are you", "how are you doing", "are you okay"}:
+        return "I am doing well and ready to help."
+
+    if normalized in {"what can you do", "what do you do", "your capabilities"}:
+        return "I can answer questions, help with projects, explain concepts, check system health, and support general conversations."
+
+    if "project" in normalized or "anna ai" in normalized:
+        return "ANNA AI is a personal AI assistant project designed to grow through modular features like conversation, memory, tools, voice, and learning."
+
     if "help" in normalized:
         return "I can help with questions, project tasks, health checks, and general conversations."
 
